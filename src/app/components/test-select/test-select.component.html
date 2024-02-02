@@ -1,0 +1,7 @@
+<div class="form-group">
+  <label>{{ label }}</label>
+  <select [(ngModel)]="selectedChoice" class="form-control">
+    <option *ngFor="let choice of choices" [value]="choice">{{ choice }}</option>
+  </select>
+  <small class="form-text text-muted">{{ description }}</small>
+</div>

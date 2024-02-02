@@ -1,0 +1,8 @@
+<div class="form-group">
+  <label>{{ label }}</label>
+  <div *ngFor="let choice of choices">
+    <input type="checkbox" [(ngModel)]="selectedChoices[choice]" [value]="choice">
+    {{ choice }}
+  </div>
+  <small class="form-text text-muted">{{ description }}</small>
+</div>

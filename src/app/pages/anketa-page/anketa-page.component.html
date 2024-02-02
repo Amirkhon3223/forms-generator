@@ -1,0 +1,59 @@
+<div class="container">
+  <h1>Анкета</h1>
+  <form (ngSubmit)="onSubmitForm()">
+    <!-- Поле "Имя" -->
+    <app-test-input
+        label="Имя"
+        [description]="'Введите ваше имя'"
+        [required]="true"
+        [(ngModel)]="formData.name">
+    </app-test-input>
+
+    <!-- Поле "Возраст" -->
+    <app-test-number
+        label="Возраст"
+        [description]="'Введите ваш возраст'"
+        [required]="true"
+        [(ngModel)]="formData.age">
+    </app-test-number>
+
+    <!-- Поле "Семейное положение" -->
+    <app-test-select
+        label="Семейное положение"
+        [description]="'Выберите ваше семейное положение'"
+        [required]="true"
+        [choices]="['Женат/Замужем', 'Не женат/Не замужем', 'Разведен/Разведена']"
+        [(ngModel)]="formData.maritalStatus">
+    </app-test-select>
+
+    <!-- Поле "Вуз" -->
+    <div *ngFor="let university of formData.universities; let i=index">
+      <app-test-input
+          label="Вуз"
+          [description]="'Введите ваш университет'"
+          [required]="true"
+          [(ngModel)]="formData.universities[i]">
+      </app-test-input>
+    </div>
+    <button (click)="addUniversity()">Добавить еще</button>
+
+    <!-- Поле "Место рождения" -->
+    <app-test-select
+        label="Место рождения"
+        [description]="'Выберите ваше место рождения'"
+        [required]="false"
+        [choices]="['Москва', 'Санкт-Петербург', 'Киев', 'Другое']"
+        [(ngModel)]="formData.birthplace">
+    </app-test-select>
+
+    <!-- Поле "Навыки" -->
+    <app-test-checkbox
+        label="Навыки"
+        [description]="'Выберите ваши навыки'"
+        [choices]="['Общение', 'Вождение', 'Иностранные языки', 'Программирование', 'Бег с препятствиями', 'Управление вертолетом', 'Быстрое чтение', 'Оперное пение', 'Самооборона']"
+        [(ngModel)]="formData.skills">
+    </app-test-checkbox>
+
+    <button type="submit">Отправить</button>
+  </form>
+</div>
